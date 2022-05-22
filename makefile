@@ -15,6 +15,7 @@ LDFLAGS =
 $(BIN): $(SRCDIR)main.cxx
 	g++ $(CFLAGS) -o $(BLDDIR)graphics-moment $(SRCDIR)main.cxx $(LDFLAGS)
 
+
 .PHONY: test clean
 
 test: $(BIN)
