@@ -31,6 +31,14 @@ class Application {
 
 		glfwMakeContextCurrent(window);// tell glfw "no really, we want to render to this window"
 
+		glViewport(0,0, 800, 600);
+
+		// make the window a nice and pretty, subtle color of a really agressive magenta
+		// why magenta? because if the main loop doesent work at all its at least aggressively shown to the user that somthing is very clearly wrong
+		glClearColor(1.0f,0.0f,1.0f,1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+		glfwSwapBuffers(window);
+
 		std::cout << "project initialised!\n";
 	}
 
