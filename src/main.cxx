@@ -1,4 +1,6 @@
-#include "include/common.hxx"
+#include "include/app.hxx"
+
+#include<iostream>
 
 int main (){
 	std::cout << "starting up!\n";

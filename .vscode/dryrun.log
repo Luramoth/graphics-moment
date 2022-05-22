@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/kayla/Programming/Cpp/graphics-moment'
+make: Nothing to be done for 'all'.
+make: Leaving directory '/home/kayla/Programming/Cpp/graphics-moment'
+ 

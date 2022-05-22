@@ -1,25 +1,34 @@
-# name of the binary
-BIN = graphics-moment
-
-# all the directories
-SRCDIR = src/
-BLDDIR = build/
-
-# flags for g++
-CFLAGS = -std=c++17 -O2
-
-# libararies
+CC = gcc
+CPP = g++
+STRIP = strip
+CPPFLAGS = -std=gnu++20 -O2 -g -Wstrict-aliasing
 LDFLAGS = -lGL -lGLU -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi
 
+SRCDIR = src
+BUILDDIR = build
+BIN = $(BUILDDIR)/graphics-moment
 
-$(BIN): $(SRCDIR)main.cxx
-	g++ $(CFLAGS) -o $(BLDDIR)graphics-moment $(SRCDIR)main.cxx $(LDFLAGS)
+CPPFILES := $(shell find ./$(SRCDIR) -type f -name '*.cxx')
+OBJ := $(CPPFILES:./$(SRCDIR)/%.cxx=$(BUILDDIR)/%.o)
 
+.PHONY: all test clean
 
-.PHONY: test clean
+all: $(BIN)
 
 test: $(BIN)
-	./$(BLDDIR)$(BIN)
+	@echo "[TEST] $@"
+	@./$(BIN)
 
-clean: 
-	rm -f $(BLDDIR)$(BIN)
+# Link rules for the final executable.
+$(BIN): $(OBJ)
+	@echo "[LD] $@"
+	@$(CPP) $(LDFLAGS) $^ -o $@
+
+# Compilation rules for *.cxx files.
+$(BUILDDIR)/%.o: src/%.cxx
+	@echo "[CPP] $< | $@"
+	@mkdir -p $(shell dirname $@)
+	@$(CPP) $(CPPFLAGS) -c $< -o $@
+
+clean:
+	rm -rf $(BUILDDIR)
