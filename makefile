@@ -9,7 +9,7 @@ BLDDIR = build/
 CFLAGS = -std=c++17 -O2
 
 # libararies
-LDFLAGS = 
+LDFLAGS = -lGL -lGLU -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi
 
 
 $(BIN): $(SRCDIR)main.cxx
