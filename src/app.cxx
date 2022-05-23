@@ -40,9 +40,10 @@ void Application::initWindow() {
 		glfwTerminate();
 		std::cerr << "failed to initialise window\n";
 	}
+	glfwMakeContextCurrent(window);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
-		std::cerr << "failed to initialise GLAD\n";// if GLAD cant start then throw an error and crash
+		std::cerr << "failed to initialise GLAD\n";// if GLAD cant start then throw an error
 	}
 
 	std::cout << "project initialised!\n";
