@@ -34,6 +34,11 @@ void Application::initWindow() {
 
 	glfwMakeContextCurrent(window);// tell glfw "no really, we want to render to this window"
 
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		std::cerr << "Failed to initialize GLAD\n";
+	}   
+
 	glViewport(0,0, 800, 600);
 
 	// make the window a nice and pretty, subtle color of a really agressive magenta
@@ -47,8 +52,6 @@ void Application::initWindow() {
 
 void Application::mainloop(){
 	std::cout << "running main loop\n";
-
-	std::cout << "compilation test\n";
 
 	float verticies[] = {// vertex data for opengl
 		-0.5f, -0.5f, 0.0f,

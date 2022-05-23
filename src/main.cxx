@@ -5,8 +5,6 @@
 int main (){
 	std::cout << "starting up!\n";
 
-	std::cout << "compilation test\n";
-
 	Application app;
 
 	try
