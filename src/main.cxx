@@ -1,9 +1,13 @@
 #include "include/app.hxx"
+#include "include/colormod.hxx"
 
 #include<iostream>
 
 int main (){
-	std::cout << "starting up!\n";
+	Color::Modifier green(Color::FG_GREEN);
+	Color::Modifier def(Color::FG_DEFAULT);
+
+	std::cout << green << "starting up!\n" << def;
 
 	Application app;
 

@@ -1,9 +1,16 @@
 #include "include/app.hxx"
+#include "include/colormod.hxx"
+
 #include <GLFW/glfw3.h>
 #include <iostream>
 
 const uint32_t WIDTH = 800;
 const uint32_t HEIGHT = 600;
+
+Color::Modifier red(Color::FG_RED);
+Color::Modifier green(Color::FG_GREEN);
+Color::Modifier yellow(Color::FG_YELLOW);
+Color::Modifier def(Color::FG_DEFAULT);
 
 //public
 
@@ -18,7 +25,7 @@ void Application::run(){
 
 // this initialises the program and gets everything running that needs to start running
 void Application::initWindow() {
-	std::cout << "initialising project\n";
+	std::cout << yellow << "initialising project\n" << def;
 
 	glfwInit();// this starts up GLFW
 
@@ -38,27 +45,27 @@ void Application::initWindow() {
 
 	if (window == NULL) { // if the window couldent be made then its ok to error out
 		glfwTerminate();
-		std::cerr << "failed to initialise window\n";
+		std::cerr << red << "failed to initialise window\n" << def;
 	}
 	glfwMakeContextCurrent(window);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
-		std::cerr << "failed to initialise GLAD\n";// if GLAD cant start then throw an error
+		std::cerr << red << "failed to initialise GLAD\n" << def;// if GLAD cant start then throw an error
 	}
 
-	std::cout << "project initialised!\n";
+	std::cout << green << "project initialised!\n" << def;
 }
 
 // this is the function that contains the loop that cycles through everything the program runs on
 void Application::mainloop(){
-	std::cout << "running main loop\n";
+	std::cout << yellow << "running main loop\n" << def;
 }
 
 // this function runs when the program is closing and it clears everything up for memory safety
 void Application::cleanup(){
-	std::cout << "cleaning up!\n";
+	std::cout << green << "cleaning up!\n" << def;
 
 	glfwTerminate();// this closes off GLFW
 
-	std::cout << "cleanup finished!\n";
+	std::cout << green << "cleanup finished!\n" << def;
 }
