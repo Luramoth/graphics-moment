@@ -5,13 +5,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Sun May 22 12:36:57 2022
+# Make data base, printed on Sun May 22 20:44:28 2022
 
 # Variables
 
-# makefile (from 'makefile', line 12)
+# makefile (from 'Makefile', line 13)
 OBJ := build/main.o build/app.o
 # environment
 GDK_BACKEND = x11
@@ -21,13 +20,18 @@ LC_ALL = C
 NO_AT_BRIDGE = 1
 # environment
 LMOD_SETTARG_FULL_SUPPORT = no
+# makefile (from 'Makefile', line 14)
+COBJ := build/glad.o
 # environment
-STARSHIP_SESSION_KEY = 1265201292749727
+STARSHIP_SESSION_KEY = 2624721428137503
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-a6c46993-4e5f-4f22-9c53-973185d369e6.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-1123eb1e-f929-48c7-b1b6-ea8b5cccb027.sock
+# makefile (from 'Makefile', line 12)
+CFILES := ./src/glad.c
 # environment
+ 
 VSCODE_CWD = /home/kayla
 # environment
 GPG_TTY = not a tty
@@ -43,7 +47,7 @@ MAKE_COMMAND := make
 LMOD_ROOT = /usr/share/lmod
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
-# makefile (from 'makefile', line 11)
+# makefile (from 'Makefile', line 11)
 CPPFILES := ./src/main.cxx ./src/app.cxx
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
@@ -109,14 +113,14 @@ HISTSIZE = 1000
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 XDG_SESSION_DESKTOP = gnome-xorg
-# makefile (from 'makefile', line 1)
-MAKEFILE_LIST := makefile
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 14811
+VSCODE_PID = 20074
 # environment
 SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS = 0
 # environment
@@ -171,7 +175,7 @@ MODULESHOME = /usr/share/lmod/lmod
 LMOD_sys = Linux
 # environment
 INVOCATION_ID = a1f81dc093e24176a76c9f4b7ca37050
-# makefile (from 'makefile', line 2)
+# makefile (from 'Makefile', line 2)
 CPP = g++
 # environment
 VSCODE_LOG_NATIVE = false
@@ -191,7 +195,7 @@ ORIGINAL_XDG_CURRENT_DESKTOP = GNOME
 GNUMAKEFLAGS := 
 # environment
 LOGNAME = kayla
-# makefile (from 'makefile', line 4)
+# makefile (from 'Makefile', line 4)
 CPPFLAGS = -std=gnu++20 -O2 -g -Wstrict-aliasing
 # environment
 GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
@@ -215,7 +219,7 @@ USER = kayla
 MAKE_VERSION := 4.3
 # 'override' directive
 .SHELLSTATUS := 0
-# makefile (from 'makefile', line 5)
+# makefile (from 'Makefile', line 5)
 LDFLAGS = -lGL -lGLU -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi
 # environment
 MANAGERPID = 2268
@@ -226,12 +230,12 @@ DEBUGINFOD_URLS = https://debuginfod.fedoraproject.org/
 # environment
 STARSHIP_SHELL = zsh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 14811
+GIO_LAUNCHED_DESKTOP_FILE_PID = 20074
 # environment
 SSH_AGENT_PID = 2447
 # environment
 _ = /usr/bin/make
-# makefile (from 'makefile', line 9)
+# makefile (from 'Makefile', line 9)
 BIN = $(BUILDDIR)/graphics-moment
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
@@ -251,7 +255,7 @@ QT_IM_MODULE = ibus
 ELECTRON_RUN_AS_NODE = 1
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-bedeb6ad-1.67.2-main.sock
-# makefile (from 'makefile', line 7)
+# makefile (from 'Makefile', line 7)
 SRCDIR = src
 # default
 .RECIPEPREFIX := 
@@ -261,25 +265,24 @@ SRCDIR = src
 SUFFIXES := 
 # environment
 LMOD_PKG = /usr/share/lmod/lmod
-# makefile (from 'makefile', line 3)
+# makefile (from 'Makefile', line 3)
 STRIP = strip
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
-# makefile (from 'makefile', line 1)
+# makefile (from 'Makefile', line 1)
 CC = gcc
-# makefile (from 'makefile', line 8)
+# makefile (from 'Makefile', line 8)
 BUILDDIR = build
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
 DOTNET_ROOT = /usr/lib64/dotnet
- 
 # environment
 LMOD_VERSION = 8.6.11
 # environment
 GDMSESSION = gnome-xorg
 # variable set hash-table stats:
-# Load=133/1024=13%, Rehash=0, Collisions=4/178=2%
+# Load=135/1024=13%, Rehash=0, Collisions=7/190=4%
 
 # Pattern-specific Variable Values
 
@@ -287,26 +290,46 @@ GDMSESSION = gnome-xorg
 
 # Directories
 
-# src (device 40, inode 1679363): 5 files, no impossibilities so far.
+# src (device 40, inode 1679363): 6 files, no impossibilities.
 # . (device 40, inode 1678962): 8 files, no impossibilities.
 
-# 13 files, no impossibilities in 2 directories.
+# 14 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 build/%.o: src/%.cxx
-#  recipe to execute (from 'makefile', line 29):
+#  recipe to execute (from 'Makefile', line 31):
 	@echo "[CPP] $< | $@"
 	@mkdir -p $(shell dirname $@)
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
-# 1 implicit rules, 0 (0.0%) terminal.
+build/%.o: src/%.c
+#  recipe to execute (from 'Makefile', line 36):
+	@echo "[C] $< | $@"
+	@mkdir -p $(shell dirname $@)
+	@$(CPP) $(CPPFLAGS) -c $< -o $@
+
+# 2 implicit rules, 0 (0.0%) terminal.
 # Files
+
+# Not a target:
+src/glad.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-22 13:17:30.634524138
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 src/app.cxx:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-22 12:35:12.039331538
+#  Last modified 2022-05-22 20:42:55.692425209
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-22 20:44:19.632581763
 #  File has been updated.
 #  Successfully updated.
 
@@ -315,7 +338,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 34):
+#  recipe to execute (from 'Makefile', line 41):
 	rm -rf $(BUILDDIR)
 
 # Not a target:
@@ -332,10 +355,22 @@ all: build/graphics-moment
 #  File has been updated.
 #  Successfully updated.
 
+build/glad.o: src/glad.c
+ 
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'glad'
+#  Last modified 2022-05-22 20:44:21.35456446
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 36):
+	@echo "[C] $< | $@"
+	@mkdir -p $(shell dirname $@)
+	@$(CPP) $(CPPFLAGS) -c $< -o $@
+
 # Not a target:
 src/main.cxx:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-22 12:34:41.37264142
+#  Last modified 2022-05-22 20:42:38.336599601
 #  File has been updated.
 #  Successfully updated.
 
@@ -344,24 +379,17 @@ test: build/graphics-moment
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 19):
+#  recipe to execute (from 'Makefile', line 21):
 	@echo "[TEST] $@"
 	@./$(BIN)
-
-# Not a target:
-makefile:
-#  Implicit rule search has been done.
-#  Last modified 2022-05-22 12:35:46.383984506
-#  File has been updated.
-#  Successfully updated.
 
 build/app.o: src/app.cxx
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'app'
-#  Last modified 2022-05-22 12:35:57.353873666
+#  Last modified 2022-05-22 20:42:56.763414448
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'makefile', line 29):
+#  recipe to execute (from 'Makefile', line 31):
 	@echo "[CPP] $< | $@"
 	@mkdir -p $(shell dirname $@)
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
@@ -369,10 +397,10 @@ build/app.o: src/app.cxx
 build/main.o: src/main.cxx
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  Last modified 2022-05-22 12:35:56.92387801
+#  Last modified 2022-05-22 20:42:56.422417875
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'makefile', line 29):
+#  recipe to execute (from 'Makefile', line 31):
 	@echo "[CPP] $< | $@"
 	@mkdir -p $(shell dirname $@)
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
@@ -382,29 +410,29 @@ build/main.o: src/main.cxx
 #  Modification time never checked.
 #  File has not been updated.
 
-build/graphics-moment: build/main.o build/app.o
+build/graphics-moment: build/main.o build/app.o build/glad.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-22 12:35:57.635870816
+#  Last modified 2022-05-22 20:44:21.409563908
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'makefile', line 24):
+#  recipe to execute (from 'Makefile', line 26):
 	@echo "[LD] $@"
 	@$(CPP) $(LDFLAGS) $^ -o $@
 
 # files hash-table stats:
-# Load=12/1024=1%, Rehash=0, Collisions=0/39=0%
+# Load=14/1024=1%, Rehash=0, Collisions=0/46=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 28 / storage = 247 B / avg = 8 B
-# current buf: size = 8162 B / used = 247 B / count = 28 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 34 / storage = 304 B / avg = 8 B
+# current buf: size = 8162 B / used = 304 B / count = 34 / avg = 8 B
 
-# strcache performance: lookups = 48 / hit rate = 41%
+# strcache performance: lookups = 56 / hit rate = 39%
 # hash-table stats:
-# Load=28/8192=0%, Rehash=0, Collisions=0/48=0%
-# Finished Make data base on Sun May 22 12:36:57 2022
+# Load=34/8192=0%, Rehash=0, Collisions=0/56=0%
+# Finished Make data base on Sun May 22 20:44:28 2022
 
  

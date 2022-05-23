@@ -9,7 +9,9 @@ BUILDDIR = build
 BIN = $(BUILDDIR)/graphics-moment
 
 CPPFILES := $(shell find ./$(SRCDIR) -type f -name '*.cxx')
+CFILES := $(shell find ./$(SRCDIR) -type f -name '*.c')
 OBJ := $(CPPFILES:./$(SRCDIR)/%.cxx=$(BUILDDIR)/%.o)
+COBJ := $(CFILES:./$(SRCDIR)/%.c=$(BUILDDIR)/%.o)
 
 .PHONY: all test clean
 
@@ -20,13 +22,18 @@ test: $(BIN)
 	@./$(BIN)
 
 # Link rules for the final executable.
-$(BIN): $(OBJ)
+$(BIN): $(OBJ) $(COBJ)
 	@echo "[LD] $@"
 	@$(CPP) $(LDFLAGS) $^ -o $@
 
 # Compilation rules for *.cxx files.
 $(BUILDDIR)/%.o: src/%.cxx
 	@echo "[CPP] $< | $@"
+	@mkdir -p $(shell dirname $@)
+	@$(CPP) $(CPPFLAGS) -c $< -o $@
+
+$(BUILDDIR)/%.o: src/%.c
+	@echo "[C] $< | $@"
 	@mkdir -p $(shell dirname $@)
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
