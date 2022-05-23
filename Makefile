@@ -7,7 +7,8 @@ LDFLAGS = -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl -lm
 
 SRCDIR = src
 BUILDDIR = build
-BIN = $(BUILDDIR)/graphics-moment
+BINPATH = target
+BIN = $(BUILDDIR)/$(BINPATH)/graphics-moment
 
 CPPFILES := $(shell find ./$(SRCDIR) -type f -name '*.cxx')
 CFILES := $(shell find ./$(SRCDIR) -type f -name '*.c')
@@ -31,6 +32,7 @@ $(BIN): $(OBJ)
 $(BUILDDIR)/%.o: src/%.cxx
 	@echo "[CPP] $< | $@"
 	@mkdir -p $(shell dirname $@)
+	@mkdir -p $(BUILDDIR)/$(BINPATH)
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 $(BUILDDIR)/%.o: src/%.c
