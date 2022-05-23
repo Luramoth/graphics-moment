@@ -41,6 +41,10 @@ void Application::initWindow() {
 		std::cerr << "failed to initialise window\n";
 	}
 
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
+		std::cerr << "failed to initialise GLAD\n";// if GLAD cant start then throw an error and crash
+	}
+
 	std::cout << "project initialised!\n";
 }
 
