@@ -4,7 +4,17 @@
 #include <GLFW/glfw3.h>
 
 class OpenGL {
+	private:
+
+	unsigned int shaderProgram;
+
+	unsigned int VAO;
+	
 	public:
 	
 	OpenGL(GLFWwindow* window);
+
+	unsigned int getShaderProgram();
+
+	unsigned int getVAO();
 };

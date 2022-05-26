@@ -76,6 +76,11 @@ void Application::mainloop(){
 		glClearColor(1.0f, 0.0f, 1.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		// draw the triangle
+		glUseProgram(opgl->getShaderProgram());
+		glBindVertexArray(opgl->getVAO());
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
 		// check all call events and swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();

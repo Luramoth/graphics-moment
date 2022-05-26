@@ -65,7 +65,6 @@ OpenGL::OpenGL(GLFWwindow* window){
 	glCompileShader(fragmentShader);
 
 	// create a shader program that links all the shaders together
-	unsigned int  shaderProgram;
 	shaderProgram = glCreateProgram();
 
 	// attach shaders to shader program
@@ -93,4 +92,27 @@ OpenGL::OpenGL(GLFWwindow* window){
 	//where the vertex is-v  v  v normalize data?v         v               v------------|
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+
+	//create a vertex array object
+	glGenVertexArrays(1, &VAO);
+
+	//::initialise VAO::
+	//bind Vertex Array Object
+	glBindVertexArray(VAO);
+
+	//copy vertices array in a buffer for OpenGL to use
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	//set our vertex attributes pointers
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+}
+
+unsigned int OpenGL::getShaderProgram(){
+	return shaderProgram;
+}
+
+unsigned int OpenGL::getVAO(){
+	return VAO;
 }
