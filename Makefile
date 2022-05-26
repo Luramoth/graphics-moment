@@ -20,7 +20,7 @@ OBJ += $(CFILES:./$(SRCDIR)/%.c=$(BUILDDIR)/%.o)
 all: $(BIN)
 
 test: $(BIN)
-	@echo "[TEST] $@"
+	@echo "[TEST] $(BIN)"
 	@./$(BIN)
 
 # Link rules for the final executable.

@@ -17,9 +17,9 @@ Color::Modifier def(Color::FG_DEFAULT);
 
 // function that goes through a lost of steps to successfully run through the program
 void Application::run(){
-	initWindow();
-	mainloop();
-	cleanup();
+	initWindow();// initialise EVERYTHING
+	mainloop();// start up the main loop that runs everything
+	cleanup();// deallocate all the memory that was taken up
 }
 
 //private
@@ -88,7 +88,7 @@ void Application::cleanup(){
 
 	glfwDestroyWindow(window);// destroy the window class
 	glfwTerminate();// this closes off GLFW
-	delete opgl;
+	delete opgl;// close off OpenGL
 
 	std::cout << green << "cleanup finished!\n" << def;
 }

@@ -5,14 +5,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Mon May 23 00:48:15 2022
+# Make data base, printed on Wed May 25 22:44:59 2022
 
 # Variables
 
 # makefile (from 'Makefile', line 16)
-OBJ := build/main.o build/app.o build/glad.o
+OBJ := build/main.o build/app.o build/opgl.o build/glad.o
 # environment
 GDK_BACKEND = x11
 # environment
@@ -22,31 +21,26 @@ NO_AT_BRIDGE = 1
 # environment
 LMOD_SETTARG_FULL_SUPPORT = no
 # environment
-STARSHIP_SESSION_KEY = 2624721428137503
-# environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-1123eb1e-f929-48c7-b1b6-ea8b5cccb027.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-de75e463-0fa4-42b8-9a7a-25bb7d4efc76.sock
 # makefile (from 'Makefile', line 14)
 CFILES := ./src/glad.c
 # environment
 VSCODE_CWD = /home/kayla
 # environment
-GPG_TTY = not a tty
-# environment
 WINDOWPATH = 2
-# environment
-NVM_DIR = /home/kayla/.nvm
 # environment
 GDM_LANG = en_US.UTF-8
 # default
 MAKE_COMMAND := make
 # environment
+ 
 LMOD_ROOT = /usr/share/lmod
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # makefile (from 'Makefile', line 13)
-CPPFILES := ./src/main.cxx ./src/app.cxx
+CPPFILES := ./src/main.cxx ./src/app.cxx ./src/opgl.cxx
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -104,8 +98,6 @@ SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # default
 .SHELLFLAGS := -c
 # environment
-NVM_BIN = /home/kayla/.nvm/versions/node/v18.1.0/bin
-# environment
 HISTSIZE = 1000
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
@@ -118,7 +110,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 20074
+VSCODE_PID = 41463
 # environment
 SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS = 0
 # environment
@@ -126,11 +118,11 @@ XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/unix:@/tmp/.ICE-unix/2495,unix/unix:/tmp/.ICE-unix/2495
+SESSION_MANAGER = local/unix:@/tmp/.ICE-unix/10150,unix/unix:/tmp/.ICE-unix/10150
 # automatic
 *F = $(notdir $*)
 # environment
-MANPATH = /home/kayla/.nvm/versions/node/v18.1.0/share/man:/usr/share/lmod/lmod/share/man:
+MANPATH = /usr/share/lmod/lmod/share/man:
 # environment
 MODULEPATH = /etc/modulefiles:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
 # environment
@@ -160,7 +152,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/kayla/.nvm/versions/node/v18.1.0/bin:/usr/lib64/ccache:/home/kayla/.cargo/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/kayla/.dotnet/tools
+PATH = /usr/lib64/ccache:/home/kayla/.cargo/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/kayla/.dotnet/tools
 # environment
 MOZ_GMP_PATH = /usr/lib64/mozilla/plugins/gmp-gmpopenh264/system-installed
 # default
@@ -172,7 +164,7 @@ MODULESHOME = /usr/share/lmod/lmod
 # environment
 LMOD_sys = Linux
 # environment
-INVOCATION_ID = a1f81dc093e24176a76c9f4b7ca37050
+INVOCATION_ID = f6b0b00bab404e7191317700be260271
 # makefile (from 'Makefile', line 2)
 CPP = g++
 # environment
@@ -202,7 +194,7 @@ BASH_ENV = /usr/share/lmod/lmod/init/bash
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 2551
+SYSTEMD_EXEC_PID = 10208
 # environment
 MODULEPATH_ROOT = /usr/share/modulefiles
 # environment
@@ -220,17 +212,15 @@ MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 6)
 LDFLAGS = -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl -lm
 # environment
-MANAGERPID = 2268
+MANAGERPID = 9929
 # environment
 which_declare = typeset -f
 # environment
 DEBUGINFOD_URLS = https://debuginfod.fedoraproject.org/ 
 # environment
-STARSHIP_SHELL = zsh
+GIO_LAUNCHED_DESKTOP_FILE_PID = 41463
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 20074
-# environment
-SSH_AGENT_PID = 2447
+SSH_AGENT_PID = 10102
 # environment
 _ = /usr/bin/make
 # makefile (from 'Makefile', line 11)
@@ -240,9 +230,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # makefile (from 'Makefile', line 4)
 CFLAGS = -O2 -g -Wstrict-aliasing
 # environment
-NVM_CD_FLAGS = -q
-# environment
-JOURNAL_STREAM = 8:34331
+JOURNAL_STREAM = 8:37345
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -257,6 +245,7 @@ BINPATH = target
 ELECTRON_RUN_AS_NODE = 1
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-bedeb6ad-1.67.2-main.sock
+ 
 # makefile (from 'Makefile', line 8)
 SRCDIR = src
 # default
@@ -272,7 +261,6 @@ STRIP = strip
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
 # makefile (from 'Makefile', line 1)
- 
 CC = gcc
 # makefile (from 'Makefile', line 9)
 BUILDDIR = build
@@ -285,7 +273,7 @@ LMOD_VERSION = 8.6.11
 # environment
 GDMSESSION = gnome-xorg
 # variable set hash-table stats:
-# Load=136/1024=13%, Rehash=0, Collisions=7/195=4%
+# Load=130/1024=13%, Rehash=0, Collisions=7/189=4%
 
 # Pattern-specific Variable Values
 
@@ -293,10 +281,10 @@ GDMSESSION = gnome-xorg
 
 # Directories
 
-# src (device 40, inode 1679363): 6 files, no impossibilities.
+# src (device 40, inode 1679363): 7 files, no impossibilities.
 # . (device 40, inode 1678962): 8 files, no impossibilities.
 
-# 14 files, no impossibilities in 2 directories.
+# 15 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -326,14 +314,22 @@ src/glad.c:
 # Not a target:
 src/app.cxx:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-23 00:37:48.772708187
+#  Last modified 2022-05-25 22:38:51.537482776
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-23 00:43:42.203177288
+#  Last modified 2022-05-25 22:44:37.812154618
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/opgl.cxx:
+#  Implicit rule search has been done.
+ 
+#  Last modified 2022-05-25 22:14:17.162950252
 #  File has been updated.
 #  Successfully updated.
 
@@ -362,13 +358,25 @@ all: build/target/graphics-moment
 build/glad.o: src/glad.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'glad'
-#  Last modified 2022-05-23 00:44:01.783981664
+#  Last modified 2022-05-25 22:20:35.79823212
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 39):
 	@echo "[CC] $< | $@"
 	@mkdir -p $(shell dirname $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
+
+build/opgl.o: src/opgl.cxx
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'opgl'
+#  Last modified 2022-05-25 22:20:35.490235158
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 33):
+	@echo "[CPP] $< | $@"
+	@mkdir -p $(shell dirname $@)
+	@mkdir -p $(BUILDDIR)/$(BINPATH)
+	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 # Not a target:
 src/main.cxx:
@@ -383,13 +391,12 @@ test: build/target/graphics-moment
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 23):
- 
-	@echo "[TEST] $@"
+	@echo "[TEST] $(BIN)"
 	@./$(BIN)
 
-build/target/graphics-moment: build/main.o build/app.o build/glad.o
+build/target/graphics-moment: build/main.o build/app.o build/opgl.o build/glad.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-23 00:44:01.835981145
+#  Last modified 2022-05-25 22:44:41.407120067
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 28):
@@ -397,9 +404,10 @@ build/target/graphics-moment: build/main.o build/app.o build/glad.o
 	@$(CPP) $(LDFLAGS) $^ -o $@
 
 build/app.o: src/app.cxx
+ 
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'app'
-#  Last modified 2022-05-23 00:44:01.778981714
+#  Last modified 2022-05-25 22:44:41.343120682
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 33):
@@ -411,7 +419,7 @@ build/app.o: src/app.cxx
 build/main.o: src/main.cxx
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  Last modified 2022-05-23 00:44:01.771981784
+#  Last modified 2022-05-25 22:20:35.468235375
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 33):
@@ -426,19 +434,19 @@ build/main.o: src/main.cxx
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=0/46=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/52=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 34 / storage = 311 B / avg = 9 B
-# current buf: size = 8162 B / used = 311 B / count = 34 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 38 / storage = 351 B / avg = 9 B
+# current buf: size = 8162 B / used = 351 B / count = 38 / avg = 9 B
 
-# strcache performance: lookups = 56 / hit rate = 39%
+# strcache performance: lookups = 61 / hit rate = 37%
 # hash-table stats:
-# Load=34/8192=0%, Rehash=0, Collisions=0/56=0%
-# Finished Make data base on Mon May 23 00:48:15 2022
+# Load=38/8192=0%, Rehash=0, Collisions=0/61=0%
+# Finished Make data base on Wed May 25 22:44:59 2022
 
  

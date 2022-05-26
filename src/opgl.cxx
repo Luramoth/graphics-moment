@@ -44,18 +44,20 @@ OpenGL::OpenGL(GLFWwindow* window){
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
-	// grab the shader source and compile it
+	// grab the vertex shader source and compile it
 	glShaderSource(vertexShader, 1 , &vertexShaderSource, NULL);
 	glCompileShader(vertexShader);
 	int success;
 	char infoLog[512];
 	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
 
+	// check and see if the compilation was successful 
 	if (!success) {
 		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
 		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED" << infoLog << std::endl;
 	}
 
+	// grab the fragment shader source and compile it
 	unsigned int fragmentShader;
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
