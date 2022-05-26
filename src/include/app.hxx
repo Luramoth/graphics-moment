@@ -1,6 +1,7 @@
 #pragma once
 
 #include "glad/glad.h"
+#include "opgl.hxx"
 
 #include <GLFW/glfw3.h>
 
@@ -10,6 +11,8 @@ public:
 
 private:
 	GLFWwindow *window;
+
+	OpenGL *opgl;
 
 	void initWindow();
 	void mainloop();

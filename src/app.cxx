@@ -13,9 +13,6 @@ Color::Modifier green(Color::FG_GREEN);
 Color::Modifier yellow(Color::FG_YELLOW);
 Color::Modifier def(Color::FG_DEFAULT);
 
-OpenGL *opgl = new OpenGL;
-
-
 //public
 
 // function that goes through a lost of steps to successfully run through the program
@@ -61,7 +58,7 @@ void Application::initWindow() {
 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);// tell GLFW to call this function when the viewport gets resized
 
-	opgl->init(window);
+	opgl = new OpenGL(window);
 
 	std::cout << green << "project initialised!\n" << def;
 }

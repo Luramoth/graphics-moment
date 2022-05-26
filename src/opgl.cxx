@@ -29,7 +29,7 @@ float vertices[] = {
 	0.0f, 0.5f, 0.0f
 };
 
-void OpenGL::init(GLFWwindow* window){
+OpenGL::OpenGL(GLFWwindow* window){
 	std::cout << magenta << "initialising OpenGL\n";
 
 	//VBO Vertex Buffer Object, this generates a buffer with a unique ID

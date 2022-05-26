@@ -6,5 +6,5 @@
 class OpenGL {
 	public:
 	
-	void init(GLFWwindow* window);
+	OpenGL(GLFWwindow* window);
 };
