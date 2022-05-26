@@ -27,6 +27,7 @@
 		"Objectui",
 		"Objectuiv",
 		"opengl",
+		"opgl",
 		"Parameterfv",
 		"PFNGLACTIVETEXTUREPROC",
 		"PFNGLATTACHSHADERPROC",
