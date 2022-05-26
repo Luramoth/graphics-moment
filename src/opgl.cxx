@@ -2,6 +2,7 @@
 #include "include/colormod.hxx"
 
 #include <GLFW/glfw3.h>
+#include <cstddef>
 #include <iostream>
 
 Color::Modifier magenta(Color::FG_MAGENTA);
@@ -15,7 +16,7 @@ const char *vertexShaderSource = "#version 330 core\n"
 	"}\0";
 
 // fragment shader source code (GLSL)
-const char *fragmentShaderSource = "#version 330 core"
+const char *fragmentShaderSource = "#version 330 core\n"
 	"out vec4 FragColor;\n"
 	"void main()\n"
 	"{\n"
@@ -54,7 +55,7 @@ OpenGL::OpenGL(GLFWwindow* window){
 	// check and see if the compilation was successful 
 	if (!success) {
 		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED" << infoLog << std::endl;
+		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED " << infoLog << std::endl;
 	}
 
 	// grab the fragment shader source and compile it
@@ -62,4 +63,34 @@ OpenGL::OpenGL(GLFWwindow* window){
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	glCompileShader(fragmentShader);
+
+	// create a shader program that links all the shaders together
+	unsigned int  shaderProgram;
+	shaderProgram = glCreateProgram();
+
+	// attach shaders to shader program
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	glLinkProgram(shaderProgram);
+
+	// check if thins actually worked
+	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+	if(!success){
+		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER_PROGRAM::LINKING_FAILED " << infoLog << std::endl;
+	}
+
+	//actually use the program
+	glUseProgram(shaderProgram);
+
+	//delete shaders as we dont need them anymore
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
+
+	//tell OpenGL how to handle these vertex's
+
+	//size of vert attribute-|  |-type of attribute| the space between attributes| offset data
+	//where the vertex is-v  v  v normalize data?v         v               v------------|
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
 }
