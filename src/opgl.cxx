@@ -25,10 +25,16 @@ const char *fragmentShaderSource = "#version 330 core\n"
 
 // some vertex data that draws a triangle
 float vertices[] = {
-	-0.5f, -0.5f, 0.0f,
-	0.5f, -0.5f, 0.0f,
-	0.0f, 0.5f, 0.0f
+	0.5f,	0.5f,	0.0f,  // top right
+	0.5f,	-0.5f,	0.0f,  // bottom right
+	-0.5f,	-0.5f,	0.0f,  // bottom left
+	-0.5f,	0.5f,	0.0f   // top left 
 };
+
+unsigned int indices[] = {  // note that we start from 0!
+	0,	1,	3,   // first triangle
+	1,	2,	3    // second triangle
+};  
 
 OpenGL::OpenGL(GLFWwindow* window){
 	std::cout << magenta << "initialising OpenGL\n";
@@ -109,10 +115,9 @@ OpenGL::OpenGL(GLFWwindow* window){
 	glEnableVertexAttribArray(0);
 }
 
-unsigned int OpenGL::getShaderProgram(){
-	return shaderProgram;
-}
-
-unsigned int OpenGL::getVAO(){
-	return VAO;
+void OpenGL::GLRender(){
+	// draw the triangle
+	glUseProgram(shaderProgram);
+	glBindVertexArray(VAO);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
 }

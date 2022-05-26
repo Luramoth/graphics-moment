@@ -14,7 +14,5 @@ class OpenGL {
 	
 	OpenGL(GLFWwindow* window);
 
-	unsigned int getShaderProgram();
-
-	unsigned int getVAO();
+	void GLRender();
 };
