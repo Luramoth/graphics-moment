@@ -8,7 +8,7 @@
 			"name": "(gdb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/build/graphics-moment",
+			"program": "${workspaceFolder}/build/target/graphics-moment",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
