@@ -5,7 +5,6 @@
 
 class OpenGL {
 	private:
-
 	unsigned int VBO;
 
 	unsigned int shaderProgram;
@@ -17,7 +16,6 @@ class OpenGL {
 	bool wireframe;
 	
 	public:
-	
 	OpenGL(GLFWwindow* window);
 
 	void GLRender();
