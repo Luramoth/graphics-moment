@@ -130,17 +130,17 @@ OpenGL::OpenGL(GLFWwindow* window){
 	//set our vertex attributes pointers
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+}
 
+void OpenGL::GLRender(){
 	// checks if user is in wireframe view
 	if (wireframe){
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}else{
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
-}
 
-void OpenGL::GLRender(){
-	// draw the triangle
+	// draw the whatever
 	glUseProgram(shaderProgram);
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

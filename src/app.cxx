@@ -103,7 +103,11 @@ void Application::framebuffer_size_callback(GLFWwindow* window, int width, int h
 
 // get some input data from GLFW to close the window when esc is pressed
 void Application::processInput(){
-	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS){
+	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
-	}
+
+	if (glfwGetKey(window, GLFW_KEY_TAB) == GLFW_PRESS)
+		opgl->wireframe = true;
+	else
+		opgl->wireframe = false;
 };
