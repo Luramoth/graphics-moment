@@ -13,6 +13,8 @@ class OpenGL {
 	unsigned int VAO;
 
 	unsigned int EBO;
+
+	bool wireframe;
 	
 	public:
 	
