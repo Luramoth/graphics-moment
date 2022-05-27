@@ -6,9 +6,13 @@
 class OpenGL {
 	private:
 
+	unsigned int VBO;
+
 	unsigned int shaderProgram;
 
 	unsigned int VAO;
+
+	unsigned int EBO;
 	
 	public:
 	
