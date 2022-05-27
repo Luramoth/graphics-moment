@@ -91,7 +91,7 @@ OpenGL::OpenGL(GLFWwindow* window){
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-	//tell OpenGL how to handle these vertex's
+	//tell OpenGL how to handle these vertices
 
 	//size of vert attribute-|  |-type of attribute| the space between attributes| offset data
 	//where the vertex is-v  v  v normalize data?v         v               v------------|
