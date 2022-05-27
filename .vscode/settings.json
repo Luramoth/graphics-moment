@@ -179,7 +179,8 @@
 		"Stringi",
 		"UIPROC",
 		"UIVPROC",
-		"Uniformsiv"
+		"Uniformsiv",
+		"wireframe"
 	],
 	"cSpell.ignorePaths": [
 		"package-lock.json",
