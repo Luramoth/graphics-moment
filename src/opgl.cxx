@@ -1,5 +1,6 @@
 #include "include/opgl.hxx"
 #include "include/colormod.hxx"
+#include "include/shader.hxx"
 
 #include <GLFW/glfw3.h>
 #include <cstddef>
@@ -7,7 +8,7 @@
 
 Color::Modifier magenta(Color::FG_MAGENTA);
 
-//vertex shader source code (GLSL)
+/* //vertex shader source code (GLSL)
 const char *vertexShaderSource = "#version 330 core\n"
 	"layout (location = 0) in vec3 aPos;\n"
 	"void main()\n"
@@ -21,14 +22,14 @@ const char *fragmentShaderSource = "#version 330 core\n"
 	"void main()\n"
 	"{\n"
 	"	FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-	"}\0";
+	"}\0"; */
 
 // some vertex data that draws a triangle
 float vertices[] = {
-	0.5f,	0.5f,	0.0f,  // top right
-	0.5f,	-0.5f,	0.0f,  // bottom right
-	-0.5f,	-0.5f,	0.0f,  // bottom left
-	-0.5f,	0.5f,	0.0f   // top left 
+	// positions			// colors
+	0.5f,	-0.5f,	0.0f,	1.0f,	0.0f,	0.0f,   // bottom right
+	-0.5f,	-0.5f,	0.0f,	0.0f,	1.0f,	0.0f,   // bottom left
+	0.0f,	0.5f,	0.0f,	0.0f,	0.0f,	1.0f    // top 
 };
 
 unsigned int indices[] = {  // note that we start from 0!
@@ -38,6 +39,8 @@ unsigned int indices[] = {  // note that we start from 0!
 
 // set wether or not to see wireframe view
 bool wireframe = true;
+
+Shader baseShaders("../shaders/vertex.glsl","../shaders/fragment.glsl");
 
 OpenGL::OpenGL(GLFWwindow* window){
 	std::cout << magenta << "initialising OpenGL\n";
@@ -50,7 +53,7 @@ OpenGL::OpenGL(GLFWwindow* window){
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);// set the buffer data to the vertices as defined earlier
 
 	// assign the vertex shader to actually be the vertex shader for OpenGl
-	unsigned int vertexShader;
+	/* unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
 	// grab the vertex shader source and compile it
@@ -92,7 +95,7 @@ OpenGL::OpenGL(GLFWwindow* window){
 
 	//delete shaders as we dont need them anymore
 	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
+	glDeleteShader(fragmentShader); */
 
 	//tell OpenGL how to handle these vertices
 
@@ -130,6 +133,14 @@ OpenGL::OpenGL(GLFWwindow* window){
 	//set our vertex attributes pointers
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+
+
+	// position attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	// color attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3* sizeof(float)));
+	glEnableVertexAttribArray(1);
 }
 
 void OpenGL::GLRender(){
@@ -139,6 +150,10 @@ void OpenGL::GLRender(){
 	}else{
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
+
+	//shader crap 
+	baseShaders.use();
+	baseShaders.setFloat("some uniform", 1.0f);
 
 	// draw the whatever
 	glUseProgram(shaderProgram);
