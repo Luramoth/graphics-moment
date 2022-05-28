@@ -40,7 +40,7 @@ unsigned int indices[] = {  // note that we start from 0!
 // set wether or not to see wireframe view
 bool wireframe = true;
 
-Shader baseShaders("../shaders/vertex.glsl","../shaders/fragment.glsl");
+Shader baseShaders("../../src/shaders/vertex.glsl","../../src/shaders/fragment.glsl");
 
 OpenGL::OpenGL(GLFWwindow* window){
 	std::cout << magenta << "initialising OpenGL\n";
