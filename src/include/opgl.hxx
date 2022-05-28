@@ -14,6 +14,8 @@ class OpenGL {
 	unsigned int VAO;
 
 	unsigned int EBO;
+
+	Shader baseShaders{"src/shaders/vertex.glsl","src/shaders/fragment.glsl"};
 	
 	public:
 	OpenGL(GLFWwindow* window);

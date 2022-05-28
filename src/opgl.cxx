@@ -40,10 +40,10 @@ unsigned int indices[] = {  // note that we start from 0!
 // set wether or not to see wireframe view
 bool wireframe = true;
 
-Shader baseShaders("../../src/shaders/vertex.glsl","../../src/shaders/fragment.glsl");
+
 
 OpenGL::OpenGL(GLFWwindow* window){
-	std::cout << magenta << "initialising OpenGL\n";
+	/* std::cout << magenta << "initialising OpenGL\n";
 
 	//VBO Vertex Buffer Object, this generates a buffer with a unique ID
 	glGenBuffers(1 , &VBO);
@@ -51,51 +51,6 @@ OpenGL::OpenGL(GLFWwindow* window){
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);// bind the buffer to an array
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);// set the buffer data to the vertices as defined earlier
-
-	// assign the vertex shader to actually be the vertex shader for OpenGl
-	/* unsigned int vertexShader;
-	vertexShader = glCreateShader(GL_VERTEX_SHADER);
-
-	// grab the vertex shader source and compile it
-	glShaderSource(vertexShader, 1 , &vertexShaderSource, NULL);
-	glCompileShader(vertexShader);
-	int success;
-	char infoLog[512];
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-
-	// check and see if the compilation was successful 
-	if (!success) {
-		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED " << infoLog << std::endl;
-	}
-
-	// grab the fragment shader source and compile it
-	unsigned int fragmentShader;
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-	glCompileShader(fragmentShader);
-
-	// create a shader program that links all the shaders together
-	shaderProgram = glCreateProgram();
-
-	// attach shaders to shader program
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glLinkProgram(shaderProgram);
-
-	// check if thins actually worked
-	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-	if(!success){
-		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER_PROGRAM::LINKING_FAILED " << infoLog << std::endl;
-	}
-
-	//actually use the program
-	glUseProgram(shaderProgram);
-
-	//delete shaders as we dont need them anymore
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader); */
 
 	//tell OpenGL how to handle these vertices
 
@@ -131,8 +86,8 @@ OpenGL::OpenGL(GLFWwindow* window){
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	//set our vertex attributes pointers
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	//glEnableVertexAttribArray(0);
 
 
 	// position attribute
@@ -140,24 +95,43 @@ OpenGL::OpenGL(GLFWwindow* window){
 	glEnableVertexAttribArray(0);
 	// color attribute
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3* sizeof(float)));
-	glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(1); */
+
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
+    glBindVertexArray(VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
+    // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
+    // glBindVertexArray(0);
 }
 
 void OpenGL::GLRender(){
-	// checks if user is in wireframe view
+	/* // checks if user is in wireframe view
 	if (wireframe){
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}else{
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}
+	} */
 
-	//shader crap 
+	// render
+	// ------
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	// render the triangle
 	baseShaders.use();
-	baseShaders.setFloat("some uniform", 1.0f);
-
-	// draw the whatever
-	glUseProgram(shaderProgram);
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
