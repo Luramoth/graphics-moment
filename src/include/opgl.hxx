@@ -5,13 +5,31 @@
 
 #include <GLFW/glfw3.h>
 
+class VAO{
+	private:
+	GLuint id;
+
+	public:
+	VAO() {
+		glGenVertexArrays(1, &id);
+	}
+
+	~VAO(){
+		glDeleteVertexArrays(1, &id);
+	}
+
+	void bind() {
+		glBindVertexArray(id);
+	}
+};
+
 class OpenGL {
 	private:
+	VAO vao;
+
 	unsigned int VBO;
 
 	unsigned int shaderProgram;
-
-	unsigned int VAO;
 
 	unsigned int EBO;
 
@@ -24,3 +42,5 @@ class OpenGL {
 
 	void GLRender();
 };
+
+//Vertex Array Object

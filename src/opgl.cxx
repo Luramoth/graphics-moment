@@ -29,10 +29,9 @@ bool wireframe = true;
 OpenGL::OpenGL(GLFWwindow* window){
 	std::cout << magenta << "initialising OpenGL\n";
 
-    glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-    glBindVertexArray(VAO);
+    vao.bind();
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -64,6 +63,6 @@ void OpenGL::GLRender(){
 
 	// render the triangle
 	baseShaders.use();
-	glBindVertexArray(VAO);
+	vao.bind();
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
