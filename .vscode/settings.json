@@ -20,6 +20,7 @@
 		"Iuiv",
 		"khrplatform",
 		"Maski",
+		"MIPMAP",
 		"mipmaps",
 		"Multisamplefv",
 		"namez",
@@ -191,6 +192,7 @@
 		".git/objects",
 		".vscode",
 		".vscode-insiders",
-		"src/glad.c"
+		"src/glad.c",
+		"src/include/stb_image.h"
 	]
 }
