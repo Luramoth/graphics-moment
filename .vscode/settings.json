@@ -29,6 +29,7 @@
 		"opengl",
 		"opgl",
 		"Parameterfv",
+		"Parameteri",
 		"PFNGLACTIVETEXTUREPROC",
 		"PFNGLATTACHSHADERPROC",
 		"PFNGLBEGINCONDITIONALRENDERPROC",
