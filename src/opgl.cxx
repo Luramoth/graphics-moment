@@ -19,7 +19,13 @@ float vertices[] = {
 unsigned int indices[] = {  // note that we start from 0!
 	0,	1,	3,   // first triangle
 	1,	2,	3    // second triangle
-};  
+};
+
+float texCords[] = {
+	0.0f,	0.0f,	//lower left corner
+	1.0f,	0.0f,	//lower right corner
+	0.05f,	1.0f	//top center corner
+};
 
 // set wether or not to see wireframe view
 bool wireframe = true;
@@ -44,6 +50,14 @@ OpenGL::OpenGL(GLFWwindow* window){
     // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
     // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
     // glBindVertexArray(0);
+
+	// texture shit
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+
+	float boarderColor[] = {1.0f, 1.0f, 0.0f, 1.0f};
+	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, boarderColor);
 }
 
 void OpenGL::GLRender(){
