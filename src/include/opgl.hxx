@@ -5,7 +5,8 @@
 
 #include <GLFW/glfw3.h>
 
-class VAO{
+// Vertex Array Object, this contains the constructors and destructors to make the vertex array
+class VAO {
 	private:
 	GLuint id;
 
@@ -23,11 +24,30 @@ class VAO{
 	}
 };
 
+// Vertex Buffer Object contains all the constructors and destructors to make vertex buffers
+class VBO {
+	private:
+	GLuint id;
+
+	public:
+	VBO() {
+		glGenBuffers(1, &id);
+	}
+
+	~VBO() {
+		glDeleteBuffers(1, &id);
+	}
+
+	void bind() {
+		glBindBuffer(GL_ARRAY_BUFFER ,id);
+	}
+};
+
 class OpenGL {
 	private:
 	VAO vao;
 
-	unsigned int VBO;
+	VBO vbo;
 
 	unsigned int shaderProgram;
 

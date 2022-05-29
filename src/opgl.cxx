@@ -24,16 +24,14 @@ unsigned int indices[] = {  // note that we start from 0!
 // set wether or not to see wireframe view
 bool wireframe = true;
 
-
-
 OpenGL::OpenGL(GLFWwindow* window){
 	std::cout << magenta << "initialising OpenGL\n";
 
-    glGenBuffers(1, &VBO);
     // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
     vao.bind();
 
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	vbo.bind();
+
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     // position attribute
