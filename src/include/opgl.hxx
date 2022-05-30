@@ -73,6 +73,8 @@ class OpenGL {
 
 	EBO ebo;
 
+	unsigned int texture;
+
 	Shader baseShaders{"src/shaders/vertex.glsl","src/shaders/fragment.glsl"};
 	
 	public:
