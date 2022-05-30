@@ -11,9 +11,10 @@ Color::Modifier magenta(Color::FG_MAGENTA);
 // some vertex data that draws a triangle
 float vertices[] = {
 	// positions			// colors
-	0.5f,	-0.5f,	0.0f,	1.0f,	0.0f,	0.0f,   // bottom right
-	-0.5f,	-0.5f,	0.0f,	0.0f,	1.0f,	0.0f,   // bottom left
-	0.0f,	0.5f,	0.0f,	0.0f,	0.0f,	1.0f    // top 
+	0.5f,	0.5f,	0.0f,	1.0f,	0.0f,	1.0f,	// top right
+	0.5f,	-0.5f,	0.0f,	1.0f,	0.0f,	0.0f,	// bottom right
+	-0.5f,	-0.5f,	0.0f,	0.0f,	1.0f,	0.0f,	// bottom left
+	-0.5f,	0.5f,	0.0f,	0.0f,	0.0f,	1.0f	// top left
 };
 
 unsigned int indices[] = {  // note that we start from 0!
@@ -39,6 +40,8 @@ OpenGL::OpenGL(GLFWwindow* window){
 	vbo.bind();
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	ebo.bind(indices, sizeof(indices));
 
     // position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
@@ -86,4 +89,5 @@ void OpenGL::GLRender(){
 	baseShaders.use();
 	vao.bind();
 	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }

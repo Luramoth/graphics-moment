@@ -43,6 +43,26 @@ class VBO {
 	}
 };
 
+// element array buffer that connects all the polygons and all that
+class EBO {
+	private:
+	GLuint id;
+
+	public:
+	EBO() {
+		glGenBuffers(1, &id);
+	}
+
+	~EBO() {
+		glDeleteBuffers(1, &id);
+	}
+
+	void bind(unsigned int indices[], unsigned int indicesSize) {
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSize, indices, GL_STATIC_DRAW);
+	}
+};
+
 class OpenGL {
 	private:
 	VAO vao;
@@ -51,7 +71,7 @@ class OpenGL {
 
 	unsigned int shaderProgram;
 
-	unsigned int EBO;
+	EBO ebo;
 
 	Shader baseShaders{"src/shaders/vertex.glsl","src/shaders/fragment.glsl"};
 	
