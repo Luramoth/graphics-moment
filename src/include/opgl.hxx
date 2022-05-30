@@ -4,6 +4,7 @@
 #include "shader.hxx"
 
 #include <GLFW/glfw3.h>
+#include <cstddef>
 
 // Vertex Array Object, this contains the constructors and destructors to make the vertex array
 class VAO {
@@ -57,9 +58,13 @@ class EBO {
 		glDeleteBuffers(1, &id);
 	}
 
-	void bind(unsigned int indices[], unsigned int indicesSize) {
+	void bind() {
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSize, indices, GL_STATIC_DRAW);
+	}
+
+	void upload_data(size_t size, unsigned int *indices) {
+		this ->bind();
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, indices, GL_STATIC_DRAW);
 	}
 };
 
