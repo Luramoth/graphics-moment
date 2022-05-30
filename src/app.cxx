@@ -6,7 +6,7 @@
 #include <iostream>
 
 const uint32_t WIDTH = 800;
-const uint32_t HEIGHT = 600;
+const uint32_t HEIGHT = 800;
 
 Color::Modifier red(Color::FG_RED);
 Color::Modifier green(Color::FG_GREEN);
