@@ -3,3 +3,5 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/Luramoth/graphics-moment)
 ![Lines of code](https://img.shields.io/tokei/lines/github/Luramoth/graphics-moment)
 [![CodeFactor](https://www.codefactor.io/repository/github/luramoth/graphics-moment/badge)](https://www.codefactor.io/repository/github/luramoth/graphics-moment)
+
+tokei lines of code and codefactor were altered to grade only the files of code that i myself wrote
