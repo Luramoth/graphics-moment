@@ -27,13 +27,6 @@ unsigned int indices[] = {  // note that we start from 0!
 	1,	2,	3    // second triangle
 };
 
-
-float texCoords[] = {
-	0.0f, 0.0f,  // lower-left corner  
-	1.0f, 0.0f,  // lower-right corner
-	0.5f, 1.0f   // top-center corner
-};
-
 // set wether or not to see wireframe view
 bool wireframe = true;
 
