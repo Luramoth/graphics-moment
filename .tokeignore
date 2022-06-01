@@ -2,3 +2,4 @@ glad.c
 khrplatform.h
 glad.h
 stb_image.h
+src/include/glm/
