@@ -1,5 +1,3 @@
-#define STB_IMAGE_IMPLEMENTATION
-
 #include "include/opgl.hxx"
 #include "include/colormod.hxx"
 #include "include/shader.hxx"
@@ -18,10 +16,10 @@ Color::Modifier magenta(Color::FG_MAGENTA);
 
 float vertices[] = {
 	// positions          // colors           // texture coords
-	 1.0f,  1.0f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-	 1.0f, -1.0f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-	-1.0f, -1.0f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-	-1.0f,  1.0f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+	 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+	 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+	-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+	-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
 };
 
 unsigned int indices[] = {  // note that we start from 0!
@@ -68,44 +66,9 @@ OpenGL::OpenGL(GLFWwindow* window){
 	// glBindVertexArray(0);
 
 	///texture shit///
-	// texture wrapping
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
 
-	float boarderColor[] = {1.0f, 1.0f, 0.0f, 1.0f};
-	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, boarderColor);
-
-	// texture filtering
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	// mipmaps
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	// loading texture
-	stbi_set_flip_vertically_on_load(true);
-
-	int width, height, nrChannels;
-	unsigned char *data = stbi_load("src/images/testpic.png", &width, &height, &nrChannels, 0);
-
-	// generate the texture
-	glGenTextures(0, &texture);
-
-	glBindTexture(GL_TEXTURE_2D, texture);
-
-	if (data) {
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	} else {
-		std::cout << "failed to load image\n";
-	}
-
-	// get the image out of memory once the texture is generated
-	stbi_image_free(data);
-
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
+	/* glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2); */
 
 	glBindTexture(GL_TEXTURE_2D, texture);
 
