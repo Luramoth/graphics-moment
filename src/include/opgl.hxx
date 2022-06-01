@@ -80,6 +80,7 @@ class OpenGL {
 	EBO ebo;
 
 	Texture tex{"src/images/testpic.png", GL_RGB};
+	Texture tex2{"src/images/awesomeface.png", GL_RGBA};
 
 	Shader baseShaders{"src/shaders/vertex.glsl","src/shaders/fragment.glsl"};
 	

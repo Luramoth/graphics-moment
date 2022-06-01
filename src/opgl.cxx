@@ -59,7 +59,8 @@ OpenGL::OpenGL(GLFWwindow* window){
 	// glBindVertexArray(0);
 
 	///texture shit///
-	tex.Bind(&baseShaders, "tex", 0);
+	tex.Bind(&baseShaders, "texture1", 0);
+	tex2.Bind(&baseShaders, "texture2", 1);
 
 	/* glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2); */
@@ -82,7 +83,8 @@ void OpenGL::GLRender(){
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	//texture
-	tex.Bind(&baseShaders, "tex", 0);
+	tex.Bind(&baseShaders, "texture1", 0);
+	tex2.Bind(&baseShaders, "texture2", 1);
 	
 	// render the stuff
 	baseShaders.use();
