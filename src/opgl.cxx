@@ -66,11 +66,10 @@ OpenGL::OpenGL(GLFWwindow* window){
 	// glBindVertexArray(0);
 
 	///texture shit///
+	tex.Bind(&baseShaders, "tex", 0);
 
 	/* glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2); */
-
-	glBindTexture(GL_TEXTURE_2D, texture);
 
 	// position attribute
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -90,7 +89,7 @@ void OpenGL::GLRender(){
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	//texture
-	glBindTexture(GL_TEXTURE_2D, texture);
+	tex.Bind(&baseShaders, "tex", 0);
 	
 	// render the stuff
 	baseShaders.use();

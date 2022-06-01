@@ -2,6 +2,7 @@
 
 #include "glad/glad.h"
 #include "shader.hxx"
+#include "texture.hxx"
 
 #include <GLFW/glfw3.h>
 #include <cstddef>
@@ -78,7 +79,7 @@ class OpenGL {
 
 	EBO ebo;
 
-	unsigned int texture;
+	Texture tex{"src/images/testpic.png", GL_RGB};
 
 	Shader baseShaders{"src/shaders/vertex.glsl","src/shaders/fragment.glsl"};
 	
