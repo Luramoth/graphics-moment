@@ -1,7 +1,6 @@
 #include "include/opgl.hxx"
 #include "include/colormod.hxx"
 #include "include/shader.hxx"
-#include "include/stb_image.h"
 
 
 #include <GLFW/glfw3.h>
