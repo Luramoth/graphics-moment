@@ -54,19 +54,9 @@ OpenGL::OpenGL(GLFWwindow* window){
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 
-	// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
-	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
-	// glBindVertexArray(0);
-
 	///texture shit///
 	tex.Bind(&baseShaders, "texture1", 0);
 	tex2.Bind(&baseShaders, "texture2", 1);
-
-	/* glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2); */
-
-	// position attribute
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 void OpenGL::GLRender(){
