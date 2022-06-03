@@ -59,7 +59,6 @@ OpenGL::OpenGL(GLFWwindow* window){
 	///texture shit///
 	tex.Bind(&baseShaders, "texture1", 0);
 	tex2.Bind(&baseShaders, "texture2", 1);
-
 }
 
 void OpenGL::GLRender(){
