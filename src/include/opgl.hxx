@@ -3,6 +3,7 @@
 #include "glad/glad.h"
 #include "shader.hxx"
 #include "texture.hxx"
+#include "glm/glm.hpp"
 
 #include <GLFW/glfw3.h>
 #include <cstddef>
@@ -83,6 +84,11 @@ class OpenGL {
 	Texture tex2{"src/images/awesomeface.png", GL_RGBA};
 
 	Shader baseShaders{"src/shaders/vertex.glsl","src/shaders/fragment.glsl"};
+
+	// perspective shit
+	glm::mat4 model = glm::mat4(1.0f);
+	glm::mat4 view = glm::mat4(1.0f);
+	glm::mat4 projection;
 	
 	public:
 	OpenGL(GLFWwindow* window);

@@ -1,6 +1,9 @@
 #include "include/opgl.hxx"
 #include "include/colormod.hxx"
+#include "include/glm/ext/matrix_clip_space.hpp"
+#include "include/glm/ext/matrix_float4x4.hpp"
 #include "include/glm/ext/matrix_transform.hpp"
+#include "include/glm/ext/vector_float3.hpp"
 #include "include/shader.hxx"
 
 //glm stuff
@@ -60,6 +63,14 @@ OpenGL::OpenGL(GLFWwindow* window){
 	///texture shit///
 	tex.Bind(&baseShaders, "texture1", 0);
 	tex2.Bind(&baseShaders, "texture2", 1);
+
+	//perspective shit
+	model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+
+	// to move the camera you have to move the scene the opposite direction
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+
+	projection = glm::perspective(glm::radians(45.0f), 800.0f / 800.0f, 0.1f, 100.0f);
 }
 
 void OpenGL::GLRender(){
@@ -78,14 +89,17 @@ void OpenGL::GLRender(){
 	//texture
 	tex.Bind(&baseShaders, "texture1", 0);
 	tex2.Bind(&baseShaders, "texture2", 1);
-	
-	///transform shit///
-	glm::mat4 trans = glm::mat4(1.0f);
-	trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
-	trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	unsigned int transformLoc = glGetUniformLocation(baseShaders.ID, "transform");
-	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+	//perspective
+	int modelLoc = glGetUniformLocation(baseShaders.ID, "model");
+	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
+	int viewLoc = glGetUniformLocation(baseShaders.ID, "view");
+	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+
+	int projectionLoc = glGetUniformLocation(baseShaders.ID, "projection");
+	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+	
 
 	// render the stuff
 	baseShaders.use();
