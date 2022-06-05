@@ -18,18 +18,7 @@
 
 Color::Modifier magenta(Color::FG_MAGENTA);
 
-// some vertex data that draws a triangle
-
-//plane
-/* float vertices[] = { 
-	// positions          // colors           // texture coords
-	 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-	 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-	-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-	-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
-};
- */
-
+// stuff to make a cube
 float vertices[] = {
 	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 	0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -73,12 +62,6 @@ float vertices[] = {
 	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
 	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 };
-
-/* unsigned int indices[] = {  // note that we start from 0!
-	0,	1,	3,   // first triangle
-	1,	2,	3    // second triangle
-};
- */
 
 glm::vec3 cubePositions[] = {
 	glm::vec3( 0.0f,  0.0f,  0.0f), 
