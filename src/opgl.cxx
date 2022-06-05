@@ -116,6 +116,9 @@ OpenGL::OpenGL(GLFWwindow* window){
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
 
 	projection = glm::perspective(glm::radians(45.0f), 800.0f / 800.0f, 0.1f, 100.0f);
+
+	//z-buffer
+	glEnable(GL_DEPTH_TEST);
 }
 
 void OpenGL::GLRender(){
@@ -129,7 +132,7 @@ void OpenGL::GLRender(){
 	// render
 	// ------
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//texture
 	tex.Bind(&baseShaders, "texture1", 0);
