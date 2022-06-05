@@ -74,11 +74,11 @@ float vertices[] = {
 	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 };
 
-unsigned int indices[] = {  // note that we start from 0!
+/* unsigned int indices[] = {  // note that we start from 0!
 	0,	1,	3,   // first triangle
 	1,	2,	3    // second triangle
 };
-
+ */
 // set wether or not to see wireframe view
 bool wireframe = true;
 
@@ -97,21 +97,20 @@ OpenGL::OpenGL(GLFWwindow* window){
 	//ebo.upload_data(sizeof(indices), indices);
 
 	// position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 	// color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
+	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	//glEnableVertexAttribArray(1);
 	// texture coordinate attribute
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
 
 	///texture shit///
 	tex.Bind(&baseShaders, "texture1", 0);
 	tex2.Bind(&baseShaders, "texture2", 1);
 
 	//perspective shit
-	model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
 
 	// to move the camera you have to move the scene the opposite direction
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
@@ -145,6 +144,8 @@ void OpenGL::GLRender(){
 
 	int projectionLoc = glGetUniformLocation(baseShaders.ID, "projection");
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+	model = glm::rotate(model, (float)glfwGetTime() * glm::radians(0.5f), glm::vec3(0.5f, 1.0f, 0.0f));
 	
 
 	// render the stuff
