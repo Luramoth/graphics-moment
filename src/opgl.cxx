@@ -1,16 +1,16 @@
 #include "include/opgl.hxx"
 #include "include/colormod.hxx"
-#include "include/glm/ext/matrix_clip_space.hpp"
-#include "include/glm/ext/matrix_float4x4.hpp"
-#include "include/glm/ext/matrix_transform.hpp"
-#include "include/glm/ext/vector_float3.hpp"
-#include "include/glm/trigonometric.hpp"
 #include "include/shader.hxx"
 
 //glm stuff
 #include "include/glm/glm.hpp"
 #include "include/glm/gtc/matrix_transform.hpp"
 #include "include/glm/gtc/type_ptr.hpp"
+#include "include/glm/ext/matrix_clip_space.hpp"
+#include "include/glm/ext/matrix_float4x4.hpp"
+#include "include/glm/ext/matrix_transform.hpp"
+#include "include/glm/ext/vector_float3.hpp"
+#include "include/glm/trigonometric.hpp"
 
 #include <GLFW/glfw3.h>
 #include <iostream>
