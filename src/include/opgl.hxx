@@ -95,11 +95,7 @@ class OpenGL {
 	glm::mat4 projection;
 
 	// camera shit
-	Camera camera;
-	const float radius = 10.0f;
-
-	float camX;
-	float camZ;
+	
 	
 	public:
 	OpenGL(GLFWwindow* window);

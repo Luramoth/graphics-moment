@@ -117,6 +117,9 @@ OpenGL::OpenGL(GLFWwindow* window){
 
 	//z-buffer
 	glEnable(GL_DEPTH_TEST);
+
+	// camera shit
+	
 }
 
 void OpenGL::GLRender(){
@@ -151,11 +154,8 @@ void OpenGL::GLRender(){
 	vao.bind();
 
 	//camera shit
-	camX = sin(glfwGetTime()) * radius;
-	camZ = cos(glfwGetTime()) * radius;
 	
-	camera.view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
-
+	
 	// render all the cubes
 	for (unsigned int i = 0; i < 10; i++)
 	{
