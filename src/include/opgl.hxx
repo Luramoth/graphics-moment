@@ -1,9 +1,11 @@
 #pragma once
 
-#include "glad/glad.h"
 #include "shader.hxx"
 #include "texture.hxx"
+#include "camera.hxx"
+
 #include "glm/glm.hpp"
+#include "glad/glad.h"
 
 #include <GLFW/glfw3.h>
 #include <cstddef>
@@ -72,23 +74,32 @@ class EBO {
 
 class OpenGL {
 	private:
+	// buffer shit
 	VAO vao;
 
 	VBO vbo;
 
-	unsigned int shaderProgram;
-
 	EBO ebo;
 
+	// texture shit
 	Texture tex{"src/images/testpic.png", GL_RGB};
 	Texture tex2{"src/images/awesomeface.png", GL_RGBA};
 
+	// shader shit
+	unsigned int shaderProgram;
 	Shader baseShaders{"src/shaders/vertex.glsl","src/shaders/fragment.glsl"};
 
 	// perspective shit
 	glm::mat4 model = glm::mat4(1.0f);
 	glm::mat4 view = glm::mat4(1.0f);
 	glm::mat4 projection;
+
+	// camera shit
+	Camera camera;
+	const float radius = 10.0f;
+
+	float camX;
+	float camZ;
 	
 	public:
 	OpenGL(GLFWwindow* window);

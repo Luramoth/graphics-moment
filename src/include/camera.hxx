@@ -13,6 +13,8 @@ class Camera {
 
 	glm::vec3 camUp;
 
+	glm::mat4 view;
+
 	//functions
 	Camera();
 };

@@ -1,5 +1,6 @@
 #include "include/opgl.hxx"
 #include "include/colormod.hxx"
+#include "include/glm/fwd.hpp"
 #include "include/shader.hxx"
 
 //glm stuff
@@ -145,14 +146,18 @@ void OpenGL::GLRender(){
 	int projectionLoc = glGetUniformLocation(baseShaders.ID, "projection");
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
-	//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(0.5f), glm::vec3(0.5f, 1.0f, 0.0f));
-	
-
 	// render the stuff
 	baseShaders.use();
 	vao.bind();
 
-	for(unsigned int i = 0; i < 10; i++)
+	//camera shit
+	camX = sin(glfwGetTime()) * radius;
+	camZ = cos(glfwGetTime()) * radius;
+	
+	camera.view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+
+	// render all the cubes
+	for (unsigned int i = 0; i < 10; i++)
 	{
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::translate(model, cubePositions[i]);
