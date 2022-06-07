@@ -2,7 +2,6 @@
 
 #include "shader.hxx"
 #include "texture.hxx"
-#include "camera.hxx"
 
 #include "glm/glm.hpp"
 #include "glad/glad.h"
@@ -95,7 +94,9 @@ class OpenGL {
 	glm::mat4 projection;
 
 	// camera shit
-	
+	const float radius = 10.0f;
+	float camX;
+	float camZ;
 	
 	public:
 	OpenGL(GLFWwindow* window);
