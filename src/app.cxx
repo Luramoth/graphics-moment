@@ -15,7 +15,7 @@ Color::Modifier def(Color::FG_DEFAULT);
 
 //public
 
-// function that goes through a lost of steps to successfully run through the program
+// function that goes through a list of steps to successfully run through the program
 void Application::run(){
 	initWindow();// initialise EVERYTHING
 	mainloop();// start up the main loop that runs everything
