@@ -155,10 +155,10 @@ void OpenGL::GLRender(){
 	vao.bind();
 
 	//camera shit
-	camX = sin(glfwGetTime()) * radius;
-	camZ = cos(glfwGetTime()) * radius;
+	//camX = sin(glfwGetTime()) * radius;
+	//camZ = cos(glfwGetTime()) * radius;
 
-	view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));  
+	view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp); 
 
 
 	// render all the cubes
