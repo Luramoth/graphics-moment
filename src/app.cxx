@@ -107,8 +107,6 @@ void Application::framebuffer_size_callback(GLFWwindow* window, int width, int h
 
 // get some input data from GLFW
 void Application::processInput(){
-	std::cout << cameraSpeed << std::endl;
-
 	cameraSpeed = 2.5f * deltaTime;
 
 	//close the window if esc is pressed
