@@ -113,5 +113,3 @@ class OpenGL {
 	//functions
 	void GLRender();
 };
-
-//Vertex Array Object

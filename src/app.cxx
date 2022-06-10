@@ -69,6 +69,10 @@ void Application::mainloop(){
 
 	// while the application isent closed, do everything.
 	while (!glfwWindowShouldClose(window)){
+		currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+		
 		// take input from the user
 		processInput();
 
@@ -103,6 +107,10 @@ void Application::framebuffer_size_callback(GLFWwindow* window, int width, int h
 
 // get some input data from GLFW
 void Application::processInput(){
+	std::cout << cameraSpeed << std::endl;
+
+	cameraSpeed = 2.5f * deltaTime;
+
 	//close the window if esc is pressed
 	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
@@ -112,4 +120,13 @@ void Application::processInput(){
 		opgl->wireframe = true;
 	else
 		opgl->wireframe = false;
+	
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        opgl->cameraPos += cameraSpeed * opgl->cameraFront;
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        opgl->cameraPos -= cameraSpeed * opgl->cameraFront;
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        opgl->cameraPos -= glm::normalize(glm::cross(opgl->cameraFront, opgl->cameraUp)) * cameraSpeed;
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        opgl->cameraPos += glm::normalize(glm::cross(opgl->cameraFront, opgl->cameraUp)) * cameraSpeed;
 };

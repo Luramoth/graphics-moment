@@ -7,12 +7,19 @@
 
 class Application {
 public:
+	float cameraSpeed = 2.5f;
+
+	float deltaTime = 0.0f;
+	float lastFrame = 0.0f;
+
 	void run();
 
 private:
 	GLFWwindow *window;
 
 	OpenGL *opgl;
+
+	float currentFrame;
 
 	void initWindow();
 	void mainloop();
