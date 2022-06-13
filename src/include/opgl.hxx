@@ -100,8 +100,6 @@ class OpenGL {
 	//float camZ;
 	
 	public:
-	//classes
-	OpenGL(GLFWwindow* window);
 
 	//vars
 	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
@@ -111,5 +109,7 @@ class OpenGL {
 	bool wireframe;
 
 	//functions
+	OpenGL(GLFWwindow* window);
+
 	void GLRender();
 };
