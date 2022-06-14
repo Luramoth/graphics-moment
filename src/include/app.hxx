@@ -15,12 +15,15 @@ public:
 	void run();
 
 private:
+	//classes
 	GLFWwindow *window;
 
 	OpenGL *opgl;
 
+	//variables
 	float currentFrame;
 
+	//functions
 	void initWindow();
 	void mainloop();
 	void cleanup();
@@ -28,4 +31,6 @@ private:
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 	void processInput();
+
+	static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 };

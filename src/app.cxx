@@ -1,4 +1,6 @@
 #include "include/app.hxx"
+#include "include/glm/fwd.hpp"
+#include "include/glm/trigonometric.hpp"
 #include "include/opgl.hxx"
 #include "include/colormod.hxx"
 
@@ -12,6 +14,8 @@ Color::Modifier red(Color::FG_RED);
 Color::Modifier green(Color::FG_GREEN);
 Color::Modifier yellow(Color::FG_YELLOW);
 Color::Modifier def(Color::FG_DEFAULT);
+
+glm::vec3 camFront;
 
 //public
 
@@ -60,8 +64,15 @@ void Application::initWindow() {
 
 	opgl = new OpenGL(window);
 
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+	glfwSetCursorPosCallback(window, mouse_callback);
+
+	camFront = opgl->cameraFront;
+
 	std::cout << green << "project initialised!\n" << def;
 }
+
 
 // this is the function that contains the loop that cycles through everything the program runs on
 void Application::mainloop(){
@@ -128,3 +139,33 @@ void Application::processInput(){
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         opgl->cameraPos += glm::normalize(glm::cross(opgl->cameraFront, opgl->cameraUp)) * cameraSpeed;
 };
+
+float yaw;
+float pitch;
+
+
+static void mouse_callback(GLFWwindow* window, double xpos, double ypos){
+	float lastX = 400, lastY = 400;
+
+	float xoffset = xpos - lastX;
+	float yoffset = ypos - lastY;
+	lastX = xpos;
+	lastY = ypos;
+
+	const float sensitivity = 0.1f;
+	xoffset *= sensitivity;
+	yoffset *= sensitivity;
+
+	yaw += xoffset;
+	pitch += yoffset;
+
+	if(pitch > 89.0f)
+		pitch = 89.0f;
+	if(pitch > -89.0f)
+		pitch = -89.0f;
+	
+	glm::vec3 direction;
+	direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	direction.y = sin(glm::radians(pitch));
+	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+}
