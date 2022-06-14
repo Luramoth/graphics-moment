@@ -188,7 +188,10 @@
 		"UIPROC",
 		"UIVPROC",
 		"Uniformsiv",
-		"wireframe"
+		"wireframe",
+		"xoffset",
+		"xpos",
+		"ypos"
 	],
 	"cSpell.ignorePaths": [
 		"package-lock.json",
