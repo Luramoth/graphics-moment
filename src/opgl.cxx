@@ -124,8 +124,6 @@ OpenGL::OpenGL(GLFWwindow* window){
 }
 
 void OpenGL::GLRender(){
-	//std::cout << "render\n";
-
 	// checks if user is in wireframe view
 	if (wireframe){
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);

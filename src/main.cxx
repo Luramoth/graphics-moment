@@ -35,6 +35,7 @@ float currentFrame;
 float yaw;
 float pitch;
 
+//initialisation function
 void init(){
 	std::cout << yellow << "initialising project\n" << def;
 
@@ -77,6 +78,7 @@ void init(){
 	std::cout << green << "project initialised!\n" << def;
 }
 
+//main loop function that will run the entire time the program is open
 void mainloop(){
 	std::cout << yellow << "running main loop\n" << def;
 
@@ -102,6 +104,7 @@ void mainloop(){
 	}
 }
 
+//function to get rid of all the stuff that isent needed anymore because the program is closing
 void cleanup(){
 	std::cout << green << "cleaning up!\n" << def;
 
@@ -112,6 +115,7 @@ void cleanup(){
 	std::cout << green << "cleanup finished!\n" << def;
 }
 
+//process all the inputs for the program
 void processInput(){
 	cameraSpeed = 2.5f * deltaTime;
 
@@ -125,6 +129,7 @@ void processInput(){
 	else
 		opgl->wireframe = false;
 	
+	//WASD          
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         opgl->cameraPos += cameraSpeed * opgl->cameraFront;
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -135,10 +140,12 @@ void processInput(){
         opgl->cameraPos += glm::normalize(glm::cross(opgl->cameraFront, opgl->cameraUp)) * cameraSpeed;
 }
 
+//resize the viewport when the window gets resized
 void framebuffer_size_callback(GLFWwindow* window, int width, int height){
 	glViewport(0,0, width, height);
 }
 
+// this function gets called when the mouse moves around, at all
 void mouse_callback(GLFWwindow* window, double xpos, double ypos){
 	float lastX = 400, lastY = 400;
 
@@ -165,6 +172,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos){
 	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
 }
 
+//entry point for the program
 int main (){
 
 	std::cout << green << "starting up!\n" << def;
