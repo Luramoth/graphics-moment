@@ -108,19 +108,6 @@ OpenGL::OpenGL(GLFWwindow* window){
 	///texture shit///
 	tex.Bind(&baseShaders, "texture1", 0);
 	tex2.Bind(&baseShaders, "texture2", 1);
-
-	//perspective shit
-
-	// to move the camera you have to move the scene the opposite direction
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-
-	projection = glm::perspective(glm::radians(45.0f), 800.0f / 800.0f, 0.1f, 100.0f);
-
-	//z-buffer
-	glEnable(GL_DEPTH_TEST);
-
-	// camera shit
-	view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 void OpenGL::GLRender(){
@@ -140,16 +127,6 @@ void OpenGL::GLRender(){
 	tex.Bind(&baseShaders, "texture1", 0);
 	tex2.Bind(&baseShaders, "texture2", 1);
 
-	//perspective
-	int modelLoc = glGetUniformLocation(baseShaders.ID, "model");
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-
-	int viewLoc = glGetUniformLocation(baseShaders.ID, "view");
-	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-
-	int projectionLoc = glGetUniformLocation(baseShaders.ID, "projection");
-	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
-
 	// render the stuff
 	baseShaders.use();
 	vao.bind();
@@ -158,8 +135,7 @@ void OpenGL::GLRender(){
 	//camX = sin(glfwGetTime()) * radius;
 	//camZ = cos(glfwGetTime()) * radius;
 
-	view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp); 
-
+	camera.update();
 
 	// render all the cubes
 	for (unsigned int i = 0; i < 10; i++)

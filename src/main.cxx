@@ -130,14 +130,14 @@ void processInput(){
 		opgl->wireframe = false;
 	
 	//WASD          
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        opgl->cameraPos += cameraSpeed * opgl->cameraFront;
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        opgl->cameraPos -= cameraSpeed * opgl->cameraFront;
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        opgl->cameraPos -= glm::normalize(glm::cross(opgl->cameraFront, opgl->cameraUp)) * cameraSpeed;
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        opgl->cameraPos += glm::normalize(glm::cross(opgl->cameraFront, opgl->cameraUp)) * cameraSpeed;
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		opgl->camera.cameraPos += cameraSpeed * opgl->camera.cameraFront;
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		opgl->camera.cameraPos -= cameraSpeed * opgl->camera.cameraFront;
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		opgl->camera.cameraPos -= glm::normalize(glm::cross(opgl->camera.cameraFront, opgl->camera.cameraUp)) * cameraSpeed;
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		opgl->camera.cameraPos += glm::normalize(glm::cross(opgl->camera.cameraFront, opgl->camera.cameraUp)) * cameraSpeed;
 }
 
 //resize the viewport when the window gets resized

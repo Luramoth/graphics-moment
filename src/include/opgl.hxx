@@ -2,6 +2,7 @@
 
 #include "shader.hxx"
 #include "texture.hxx"
+#include "camera.hxx"
 
 #include "glm/glm.hpp"
 #include "glad/glad.h"
@@ -89,9 +90,6 @@ class OpenGL {
 	Shader baseShaders{"src/shaders/vertex.glsl","src/shaders/fragment.glsl"};
 
 	// perspective shit
-	glm::mat4 model = glm::mat4(1.0f);
-	glm::mat4 view = glm::mat4(1.0f);
-	glm::mat4 projection;
 
 	// camera shit
 
@@ -100,11 +98,10 @@ class OpenGL {
 	//float camZ;
 	
 	public:
-	//vars
-	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-	glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-	glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+	//class
+	Camera camera{baseShaders};
 
+	//vars
 	bool wireframe;
 
 	//functions
