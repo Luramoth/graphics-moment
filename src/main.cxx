@@ -174,7 +174,6 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos){
 
 //entry point for the program
 int main (){
-
 	std::cout << green << "starting up!\n" << def;
 
 	init();
