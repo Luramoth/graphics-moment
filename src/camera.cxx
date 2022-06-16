@@ -8,9 +8,6 @@
 
 Camera::Camera(Shader shader){
 	//perspective
-	int modelLoc = glGetUniformLocation(shader.ID, "model");
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-
 	int viewLoc = glGetUniformLocation(shader.ID, "view");
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 

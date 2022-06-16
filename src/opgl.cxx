@@ -105,6 +105,11 @@ OpenGL::OpenGL(GLFWwindow* window){
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
+	glm::mat4 model = glm::mat4(1.0f);
+
+	int modelLoc = glGetUniformLocation(baseShaders.ID, "model");
+
+	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	///texture shit///
 	tex.Bind(&baseShaders, "texture1", 0);
 	tex2.Bind(&baseShaders, "texture2", 1);
